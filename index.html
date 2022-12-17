@@ -21,30 +21,47 @@
   <main class="flex-row justify-space-between">
     <section class="col-12 col-md-4">
 
+      <!-- User input form -->
       <div class="card">
         <h3 class="card-header">Search By City</h3>
         <form id="user-form" class="card-body">
           <!-- <label class="form-label" for="name">City Name</label> -->
-          <input name="name" id="name" type="text" autofocus="true" class="form-input" placeholder="City Name"/>
+          <input name="name" id="city-name" type="text" autofocus="true" class="form-input" placeholder="City Name"/>
           <button type="submit" class="btn">Submit</button>
         </form>
       </div>
 
+      <!-- User recent search history -->
       <div class="card">
         <h3 class="card-header">Recent Searches</h3>
-        <!-- update IDS for recent searches/LANGUAGE BUTTONS -->
-        <div id="language-buttons" class="card-body">
-          <button data-language="javascript" class="btn">Previous selection will appear here</button>
+        <!-- TODO: update IDS for recent searches/LANGUAGE BUTTONS -->
+        <div id="recent-buttons" class="card-body">
+          <button data-recent="javascript" class="btn">Previous selection will appear here</button>
         </div>
       </div>
 
     </section>
 
-      <div class="results col-12 col-md-8">
-        <h2 class="card-header"><span id="repo-search-term"></span>Cityname should auto appear here</h2>
+    <section class="col-12 col-md-8">
+      <!-- City search results for today -->
+      <div class="today-forecast results">
+        <h2 class="card-header"><span id="results-search-term"></span>Cityname should auto appear here</h2>
         <div id="results-container" class="list-group">Content of weather output will go here</div>
       </div>
+
+      <!-- City search results 5 day forecast -->
+      <div class="weekly-forecast results">
+        <div data-day="day1">DAY1 STATS</div>
+        <div data-day="day2">DAY2 STATS</div>
+        <div data-day="day3">DAY3 STATS</div>
+        <div data-day="day4">DAY4 STATS</div>
+        <div data-day="day5">DAY5 STATS</div>
+      </div>
+    </section>
+
   </main>
+
+
 
   <script src="./assets/js/script.js"></script>
 </body>
