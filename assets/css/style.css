@@ -1,10 +1,12 @@
 :root {
-    --primary: #ccdad1;
-    --secondary: #9caea9;
-    --tertiary: #788585;
-    --light-dark: #6f6866;
-    --dark: #38302e;
+    --primary: #C5C6C7;
+    --secondary: #1F2833;
+    --tertiary: #45A29E;
+    --accent: #66FCF1;
+    --dark: #0B0C10;
+
     --border-radius: 0.3rem;
+  
   }
   
   * {
@@ -15,7 +17,7 @@
     background-color: var(--primary);
     margin: 0;
     padding: 0;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Fira Sans Extra Condensed', sans-serif;
     color: var(--dark);
     line-height: 1.5;
     font-size: 16px;
@@ -39,10 +41,12 @@
   }
   
   p {
-    font-size: 1.2rem;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
   }
   
   .btn {
+    font-family: 'Roboto', sans-serif;
     font-size: 1.3rem;
     text-decoration: none;
     padding: 6px 5px;
@@ -53,7 +57,7 @@
     color: var(--primary);
     border: none;
     outline: none;
-    background-color: var(--light-dark);
+    background-color: var(--secondary);
     box-shadow: 3px 3px var(--dark);
     transform: translate(-1px, -1px);
   }
@@ -65,36 +69,10 @@
     box-shadow: 2px 2px var(--dark);
   }
   
-  .btn-inline {
-    display: inline;
-  }
-  
-  .btn-back {
-    border-radius: var(--border-radius);
-    color: var(--primary);
-    border: none;
-    outline: none;
-    background-color: var(--light-dark);
-    box-shadow: 3px 3px var(--secondary);
-    transform: translate(-1px, -1px);
-    display: inline-block;
-    width: auto;
-    margin-top: 20px;
-    padding: 15px;
-    text-decoration: none;
-    font-size: 1.2rem;
-  }
-  
-  .btn-back:hover {
-    color: var(--primary);
-    background-color: var(--tertiary);
-    transform: translate(0, 0);
-    box-shadow: 2px 2px var(--dark);
-  }
-  
+
   .hero {
     padding: 3% 4%;
-    background-color: var(--dark);
+    background-color: var(--secondary);
     color: var(--primary);
   }
   
@@ -102,86 +80,44 @@
     max-width: 75%;
   }
   
-  .app-title {
-    font-size: 3rem;
-    background-color: var(--primary);
-    color: var(--dark);
-    padding: 0 10px;
+  .title {
+    font-size: 4rem;
+    color: var(--accent);
     display: inline-block;
-    border-radius: var(--border-radius);
-    box-shadow: 6px 5px var(--light-dark);
+    text-transform: uppercase;
   }
   
-  .list-group {
-    padding: 0;
-    list-style: none;
-  }
-  
-  .list-item {
-    margin-bottom: 10px;
-    padding: 1.5%;
-    border-radius: var(--border-radius);
-    background-color: var(--light-dark);
-    color: var(--primary);
-    text-decoration: none;
-  }
-  
-  .list-item:hover {
-    background-color: var(--dark);
-  }
-  
-  .status-icon {
-    padding: 2px 5px;
-    margin: 0 5px;
-    background-color: rgba(255, 255, 255, 1);
-    border-radius: var(--border-radius);
-  }
-  
-  .icon-danger {
-    color: rgb(255, 70, 70);
-  }
-  
-  .icon-success {
-    color: rgb(29, 153, 255);
-  }
-  
-  /* CARDS */
-  .card {
-    margin: 0 0 20px 0;
-    border: 3px solid var(--dark);
-    border-radius: var(--border-radius);
-  }
-  
-  .card-header {
-    color: var(--primary);
-    background-color: var(--dark);
-    padding: 2.5%;
-    border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
-  }
-  
-  .card-body {
-    padding: 2.5%;
-  }
-  
-  /* FORM */
-  .form-label,
-  .form-input,
-  .form-textarea {
-    display: block;
-  }
-  
-  .form-label {
-    font-size: 1.1rem;
-    margin: 0 0 0 5px;
-  }
-  
-  .form-input {
-    width: 100%;
-    padding: 3%;
-    margin: 5px 0;
-    font-size: 1.2rem;
-    border: 2px solid var(--light-dark);
-    border-radius: var(--border-radius);
-  }
-  
-  
+  /* FLEX CONTENT */
+.flex-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+/* CARD CONTENT */
+
+.card,
+.results {
+  border: 1px solid #000000;
+  margin: 10px;
+  padding: 10px;
+}
+
+.card-header {
+  text-transform: uppercase;
+}
+/* TODO: ADD A WAY TO HIDE RECENT SEARCHES IF NO SEARHCES MADE */
+
+
+/* FORM CONTENT */
+.form-input {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+
+}

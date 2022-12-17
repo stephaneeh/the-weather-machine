@@ -5,8 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!-- Why does the `<link>` to `style.css` have to come last? -->
-  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
   <link rel="stylesheet" href="./assets/css/style.css" />
   <title>The Weather Machine!</title>
@@ -14,40 +13,40 @@
 
 <body class="flex-column min-100-vh">
   <header class="hero">
-    <h1 class="app-title">Florence & The Weather Machine!</h1>
+    <h1 class="title">The Weather Machine</h1>
     <p>Sometimes i feel like throwing my hands up in the air, i know i will feel the rain!</p>
   </header>
 
 
   <main class="flex-row justify-space-between">
-    <div class="col-12 col-md-4">
+    <section class="col-12 col-md-4">
 
       <div class="card">
-        <h3 class="card-header text-uppercase">Search By User</h3>
+        <h3 class="card-header">Search By City</h3>
         <form id="user-form" class="card-body">
-          <label class="form-label" for="username">Username</label>
-          <input name="username" id="username" type="text" autofocus="true" class="form-input" />
-          <button type="submit" class="btn">Get User</button>
+          <!-- <label class="form-label" for="name">City Name</label> -->
+          <input name="name" id="name" type="text" autofocus="true" class="form-input" placeholder="City Name"/>
+          <button type="submit" class="btn">Submit</button>
         </form>
       </div>
 
       <div class="card">
-        <h3 class="card-header text-uppercase">Search By Topic</h3>
+        <h3 class="card-header">Recent Searches</h3>
+        <!-- update IDS for recent searches/LANGUAGE BUTTONS -->
         <div id="language-buttons" class="card-body">
-          <button data-language="javascript" class="btn">Input 1</button>
-          <button data-language="html" class="btn">Input 2</button>
-          <button data-language="css" class="btn">Input 3</button>
+          <button data-language="javascript" class="btn">Previous selection will appear here</button>
         </div>
       </div>
-    </div>
 
-    <div class="col-12 col-md-8">
-      <h2 class="subtitle">Content of weather output will go here<span id="repo-search-term"></span></h2>
-      <div id="repos-container" class="list-group"></div>
-    </div>
+    </section>
+
+      <div class="results col-12 col-md-8">
+        <h2 class="card-header"><span id="repo-search-term"></span>Cityname should auto appear here</h2>
+        <div id="results-container" class="list-group">Content of weather output will go here</div>
+      </div>
   </main>
 
-  <script src="./assets/js/homepage.js"></script>
+  <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
