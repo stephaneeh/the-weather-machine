@@ -114,6 +114,10 @@
   padding: 10px;
 }
 
+.results {
+  display: auto;
+}
+
 .card-header {
   text-transform: uppercase;
 }
