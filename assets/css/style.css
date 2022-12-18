@@ -87,6 +87,11 @@
     display: inline-block;
     text-transform: uppercase;
   }
+
+  .subtitle {
+    display: inline-block;
+    text-transform: uppercase;
+  }
   
   /* FLEX CONTENT */
 .flex-row {
