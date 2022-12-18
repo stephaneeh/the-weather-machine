@@ -4,7 +4,7 @@ var cityInputEl = document.querySelector('#city-name');
 var recentButtonsEl = document.querySelector('#recent-buttons');
 var resultsContainerEl = document.querySelector('#results-container');
 var searchResults = document.querySelector('#search-results');
-
+var weeklyForecast = document.querySelector('.weekly-forecast');
 var today = dayjs().format("ddd DD MMM, YYYY");
 // USER INPUT RESULTS
 var cityName = "" //FIXME: update based on cityInputEl.value
@@ -21,12 +21,12 @@ var formSubmitHandler = function(event) {
     var cityName = cityInputEl.value;
 
     console.log(cityName);//TODO: REMOVE
-    getWeather(cityName); 
+    getCurrentWeather(cityName); 
 
 }
 
 // Fetch current weather based on user input
-var getWeather = function (cityName) {
+var getCurrentWeather = function (cityName) {
     var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&limit=" + limit + "&appid=" + APIKey + "&units=" + units;  
     console.log(queryURL); //TODO: REMOVE
 
@@ -49,7 +49,9 @@ var getWeather = function (cityName) {
                 .then(function (weatherResponse) {
                     if (weatherResponse.ok) {
                         weatherResponse.json().then(function(weatherResults) {
-                            //update results search term with cityname and date
+
+             //<----------- CURRENT DAY WEATHER ENDS HERE
+                            //create htitle for current day forecast
                             var titleEl = document.createElement("h2");
                             titleEl.classList = "subtitle";
                             titleEl.textContent = cityName + " - " + today;
@@ -63,7 +65,7 @@ var getWeather = function (cityName) {
 
                             var currentWeatherDetails = [
                                 "id: " + weatherResults.weather[0].id,
-                                // id: references the icon list + d and n for day and night
+                                // TODO:id: references the icon list + d and n for day and night
                                 "weather: " + weatherResults.weather[0].main,
                                 "temp: " +  weatherResults.main.temp + "C",
                                 "humidity: " + weatherResults.main.humidity + "%",
@@ -77,24 +79,53 @@ var getWeather = function (cityName) {
                                             //append to ul
                             currentWeatherEl.append(currentWeatherList);
                             }
+
+                            //<----------- CURRENT DAY WEATHER ENDS HERE
+                            //-----------> 5 DAY FORECAST STARTS HERE (STILL WITHIN FUNCTION RESPONSE QUERY)
+
+                            //create title for 5 day forecast
+                            var weeklyTitleEl = document.createElement("h2");
+                            weeklyTitleEl.classList = "subtitle";
+                            weeklyTitleEl.textContent = "What do the next 5 days look like in " + cityName + "?";
+
+                            weeklyForecast.append(weeklyTitleEl);
+
+                            //TODO://create arry to hold next 5 days
+                            var fiveDayArray = [];
+
+                            for (var i = 0; i < 5; i++) {
+                                let forecastDate = dayjs().add(i+1, 'days').format('DD/MM/YYYY');
+
+                                fiveDayArray.push(forecastDate);
+                                console.log(forecastDate); //TODO: REMOVE
+
+                            //create 5 containers for days
+                            // for (var i=0; i < forecastDate.length; i++) {
+                            //     let cardEl = document.createElement("h3");
+                            //     cardEl.classList = "date-card";
+                            //     cardEl.textContent = forecastDate;
+
+                            //     weeklyTitleEl.append(cardEl);
+
+                            // }
+                        }
+
                         })
                     }
                 })
             })
+
+
         });
     };
 
-// var weatherData = function (cityData) {
-//     var qer
-// }
+
+    
 
 
 
 
 
-// getWeather ();
-
-//run getWeather function when submit button is clicked
 //TODO: button should not run if no input entered
 userFormEl.addEventListener('submit', formSubmitHandler);
 
