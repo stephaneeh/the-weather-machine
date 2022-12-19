@@ -96,7 +96,9 @@
   /* FLEX CONTENT */
 .flex-row {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
+
 }
 
 .flex-column {
@@ -114,6 +116,9 @@
   padding: 10px;
 }
 
+.daily-card {
+  border: 1px solid green;
+}
 .results {
   display: auto;
 }
