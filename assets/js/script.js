@@ -45,129 +45,120 @@ var getCurrentWeather = function (cityName) {
 
         var queryFullURL = "https://api.openweathermap.org/data/2.5/weather?lat=" + cityLat + "&lon=" + cityLon + "&appid=" + APIKey + "&units=" + units;  
 
-        
-        console.log(queryFullURL); //TODO: remove at the end)
     //fetch weather information based on user input
-            fetch(queryFullURL)
-                .then(function (weatherResponse) {
-                    if (weatherResponse.ok) {
-                        weatherResponse.json().then(function(weatherResults) {
+        fetch(queryFullURL)
+            .then(function (weatherResponse) {
+                if (weatherResponse.ok) {
+                    weatherResponse.json().then(function(weatherResults) {
 
-             //<----------- CURRENT DAY WEATHER ENDS HERE
-                            //create htitle for current day forecast
-                            var titleEl = document.createElement("h2");
-                            titleEl.classList = "subtitle";
-                            titleEl.textContent = cityName + " - " + today;
+                        //<----------- CURRENT DAY WEATHER ENDS HERE
+                        //create htitle for current day forecast
+                        var titleEl = document.createElement("h2");
+                        titleEl.classList = "subtitle";
+                        titleEl.textContent = cityName + " - " + today;
                         
-                            searchResults.append(titleEl);
+                        searchResults.append(titleEl);
 
-                            //add new div to hold weather results
-                            //results of weather should now appear in results-container
-                            var currentWeatherEl = document.createElement("ul");
-                            resultsContainerEl.append(currentWeatherEl);
+                        //add new div to hold weather results
+                        //results of weather should now appear in results-container
+                        var currentWeatherEl = document.createElement("ul");
+                        resultsContainerEl.append(currentWeatherEl);
 
-                            var currentWeatherDetails = [
-                                "id: " + weatherResults.weather[0].id,
-                                // TODO:id: references the icon list + d and n for day and night
-                                "weather: " + weatherResults.weather[0].main,
-                                "temp: " +  weatherResults.main.temp + "C",
-                                "humidity: " + weatherResults.main.humidity + "%",
-                                "wind speed: " + weatherResults.wind.speed + "M/S",
-                                ];
-                            console.log(currentWeatherDetails);
+                        var currentWeatherDetails = [
+                            "id: " + weatherResults.weather[0].id,
+                            // TODO:id: references the icon list + d and n for day and night
+                            "weather: " + weatherResults.weather[0].main,
+                            "temp: " +  weatherResults.main.temp + "C",
+                            "humidity: " + weatherResults.main.humidity + "%",
+                            "wind speed: " + weatherResults.wind.speed + "M/S",
+                            ];
+                        console.log(currentWeatherDetails);
 
-                            for (var i = 0; i < currentWeatherDetails.length; i++) {
-                                var currentWeatherList = document.createElement("li");
-                                currentWeatherList.textContent = currentWeatherDetails[i];
-                                            //append to ul
+                        for (var i = 0; i < currentWeatherDetails.length; i++) {
+                            var currentWeatherList = document.createElement("li");
+                            currentWeatherList.textContent = currentWeatherDetails[i];
+                            //append to ul
                             currentWeatherEl.append(currentWeatherList);
-                            }
+                        }
 
-                            //<----------- CURRENT DAY WEATHER ENDS HERE
-                            //-----------> 5 DAY FORECAST STARTS HERE (STILL WITHIN FUNCTION RESPONSE QUERY)
+                        //<----------- CURRENT DAY WEATHER ENDS HERE
+                        //-----------> 5 DAY FORECAST STARTS HERE (STILL WITHIN FUNCTION RESPONSE QUERY)
 
-                            //create title for 5 day forecast section
-                            var weeklyTitleEl = document.createElement("h2");
-                            weeklyTitleEl.classList = "daily-cards subtitle";
-                            weeklyTitleEl.textContent = "What do the next 5 days look like in " + cityName + "?";
+                        //create title for 5 day forecast section
+                        var weeklyTitleEl = document.createElement("h2");
+                        weeklyTitleEl.classList = "subtitle";
+                        weeklyTitleEl.textContent = "What do the next 5 days look like in " + cityName + "?";
 
-                            weeklyForecast.append(weeklyTitleEl);
+                        weeklyForecast.append(weeklyTitleEl);
 
-                            //create container for daily content
-                            var dailyCardContainer = document.createElement("div");
-                            dailyCardContainer.classList = "card-container flex-row";
+                        //create container for daily content
+                        var dailyCardContainer = document.createElement("div");
+                        dailyCardContainer.classList = "card-container flex-row justify-space-between";
 
-                            weeklyForecast.append(dailyCardContainer);
+                        weeklyForecast.append(dailyCardContainer);
 
-                            //TODO://create arry to hold next 5 days
-                            var fiveDayArray = [];
+                        //TODO://create arry to hold next 5 days
+                        var fiveDayArray = [];
 
-                            for (var i = 0; i < 5; i++) {
-                                let forecastDate = dayjs().add(i+1, 'days').format('DD/MM/YYYY');
+                        for (var i = 0; i < 5; i++) {
+                            let forecastDate = dayjs().add(i+1, 'days').format('DD/MM/YYYY');
 
-                                fiveDayArray.push(forecastDate);
-                                console.log(forecastDate); //TODO: REMOVE
-                            };
+                            fiveDayArray.push(forecastDate);
+                            console.log(forecastDate); //TODO: REMOVE
+                        };
 
-                            for (var i = 0; i < fiveDayArray.length; i++) {
-                                //for each day, create a card
-                                
+                        for (var i = 0; i < fiveDayArray.length; i++) {
+                            //for each day, create a card
+                            var dailyCardEl = document.createElement("div");
+                            dailyCardEl.classList = "daily-card";
 
-                                var dailyCardEl = document.createElement("div");
-                                dailyCardEl.classList = "daily-card";
+                            //for each card, create a body for the content
+                            var dailyBodyEl = document.createElement("div");
+                            dailyBodyEl.classList = "daily-body";
+                            dailyBodyEl.textContent = "weather details"
 
-                                //for each card, create a body for the content
-                                var dailyBodyEl = document.createElement("div");
-                                dailyBodyEl.classList = "daily-body";
-                                dailyBodyEl.textContent = "weather details to go here"
+                            //for each card, create a header with the date included
+                            var dailyHeaderEl = document.createElement("h3");
+                            dailyHeaderEl.classList = "daily-header";
+                            dailyHeaderEl.textContent = fiveDayArray[i];   
+                            
+                            dailyCardContainer.appendChild(dailyCardEl);
+                            dailyCardEl.appendChild(dailyHeaderEl);
+                            dailyCardEl.appendChild(dailyBodyEl);
+                        } //for loop 5 day array
 
-                                //for each card, create a header with the date included
-                                var dailyHeaderEl = document.createElement("h3");
-                                dailyHeaderEl.classList = "daily-header";
-                                dailyHeaderEl.textContent = fiveDayArray[i];   
+ 
+                        var queryForecastURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + cityLat + "&lon=" + cityLon + "&appid=" + APIKey + "&units=" + units;  
+
+                        fetch(queryForecastURL)
+                            .then(function (response) {
+                            response.json().then(function (data) {
+                            console.log(data);
+                            })
+                        })
                             
 
-                                
-                                dailyCardContainer.appendChild(dailyCardEl);
-                                dailyCardEl.appendChild(dailyHeaderEl);
-                                dailyCardEl.appendChild(dailyBodyEl);
 
-                            }
-                            //create 5 containers for days
-                            // for (var i=0; i < forecastDate.length; i++) {
-                            //     let cardEl = document.createElement("h3");
-                            //     cardEl.classList = "date-card";
-                            //     cardEl.textContent = forecastDate;
-
-                            //     weeklyTitleEl.append(cardEl);
-
-                            // }
-                        
-
-                        })
-                    }
-                })
-            })
-
-
-        });
-    };
+                    })//weather results function
+                }//if fetch results are ok
+            })//call weather results function
+        }) //fetch query full url (with lat/long)
+    }); //fetch city query URL
+};//getWeather function
 
 
     
-
-
-
-
 
 //TODO: button should not run if no input entered
 userFormEl.addEventListener('submit', formSubmitHandler);
 
 
 
-//user inputs a city name
-//user selects the submit button
+
 //users search appears in recent searches section
 //city name appear in resultsSearchTerm
-//city weather stats appear in resultsContainerEl
 //5 day forecast appears under resultsContainerEl
+
+//DONEuser inputs a city name 
+//DONEuser selects the submit button 
+//DONEcity weather stats appear in resultsContainerEl
