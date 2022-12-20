@@ -10,6 +10,7 @@ var today = dayjs().format("ddd DD MMM, YYYY");
 // USER INPUT RESULTS
 var cityName = "Brisbane"; //FIXME: update based on cityInputEl.value
 var resultsCount = 56;
+var baseCityURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + APIKey;
 
 var limit = 1; //FIXME: how many results to return from the city name list
 var units = "metric";
@@ -44,33 +45,40 @@ var getWeatherResults = function() {
             console.log(cityLat + ", " + cityLon); //TODO: remove at the end
 
             var baseFullURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + cityLat + "&lon=" + cityLon + "&appid=" + APIKey + "&units=" + units;
+            console.log(baseFullURL); //TODO: remove at the end
 
                 fetch(baseFullURL)
                     .then(function (response) {
                     response.json().then(function (data) {
                     console.log(data);
 
-                    for (var i = 0; i < 56; i++) {
-                        let hourBlock = data.list[i].dt_txt.split(' ')[1];
-                        if (hourBlock == "00:00:00") {
-                            var results = data.list[i].main.temp;
-                            console.log(results);
-                            
-                        }
-                        // console.log(hourBlock);
-                        // console.log(data.list[i].main.temp);   
-                    };
-                    
-    
-                        
-                        //let hourBlock= parseInt( $(this).attr("id").split("hour-")[1]);
-
-
+                    for (var i = 0; i < baseFullURL.length; i++) {
+                        let dateBlock = data.list[i].dt_txt.split(' ')[0];
+                        let timeBlock = data.list[i].dt_txt.split(' ')[1];
+                        if (timeBlock == "00:00:00") {
+                            var results = [
+                                "date: " + dateBlock,
+                                "id: " + data.list[i].weather[0].id,
+                                // // TODO:id: references the icon list + d and n for day and night
+                                "weather: " + data.list[i].weather[0].main,
+                                "temp: " +  data.list[i].main.temp + "C",
+                                "humidity: " + data.list[i].main.humidity + "%",
+                                "wind speed: " + data.list[i].wind.speed + "M/S",
+                                ];
+                           
+                                console.log(results);
+                                // store results in local
+                            } else {
+                                console.log("no results found");
+                            }
+                        };
                     })//response for fetch baseFullURL
                 })//function for fetch baseFullURL response
             })//response for fetch baseCityURL
-        })//function for fetch baseCityURL response
-}; //getWeatherResults function
+            })//function for fetch baseCityURL response
+        }; //getWeatherResults function
+    
+
 
 getTodaysWeather();
 getWeatherResults(); //FIXME: update to event listener on submit at end

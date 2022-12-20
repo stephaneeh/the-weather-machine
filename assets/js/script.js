@@ -127,17 +127,6 @@ var getCurrentWeather = function (cityName) {
                             dailyCardEl.appendChild(dailyBodyEl);
                         } //for loop 5 day array
 
- 
-                        var queryForecastURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + cityLat + "&lon=" + cityLon + "&appid=" + APIKey + "&units=" + units;  
-
-                        fetch(queryForecastURL)
-                            .then(function (response) {
-                            response.json().then(function (data) {
-                            console.log(data);
-                            })
-                        })
-                            
-
 
                     })//weather results function
                 }//if fetch results are ok
