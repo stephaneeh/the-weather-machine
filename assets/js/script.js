@@ -126,15 +126,13 @@ var getCurrentWeather = function (cityName) {
                             dailyCardEl.appendChild(dailyHeaderEl);
                             dailyCardEl.appendChild(dailyBodyEl);
                         } //for loop 5 day array
-
-
+z
                     })//weather results function
                 }//if fetch results are ok
             })//call weather results function
         }) //fetch query full url (with lat/long)
     }); //fetch city query URL
 };//getWeather function
-
 
     
 
