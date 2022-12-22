@@ -27,7 +27,16 @@ var formSubmitHandler = function(event) {
     event.preventDefault();
 
     //Update cityName based on user input
-    var cityName = cityInputEl.value;
+    let cityName = cityInputEl.value;
+
+    if(cityName) {
+        searchResults.textContent = "";
+        weeklyForecast.textContent = "";
+        cityInputEl.value = "";
+    }
+    else {
+        alert("Please add a city to search");
+    }
 
     console.log(cityName);//TODO: REMOVE
     // getCurrentWeather(cityName);
