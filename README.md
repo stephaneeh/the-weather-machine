@@ -12,11 +12,11 @@ This is a weather dashboard that can be used to find the current weather and the
 
 ## Application
 
-Check out The Weather Machine here - 
+Check out The Weather Machine here - https://stephaneeh.github.io/the-weather-machine/
 
 ## Screenshots of application
 
-
+![Screenshot 2022-12-28 at 11 30 36 am](https://user-images.githubusercontent.com/28996399/209743310-cf862ac6-3048-449f-aec4-9743f8660b1f.png)
 
 ## Resources
 
