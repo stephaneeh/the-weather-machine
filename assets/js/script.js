@@ -149,10 +149,10 @@ var getCurrentWeather = function (cityName) {
                     for (var i = 0; i < forecastURL.length; i++) {
                         let timeBlock = data.list[i].dt_txt.split(' ')[1];
                     
-                            if (timeBlock == "03:00:00") {
+                            if (timeBlock == "00:00:00") {
                                 //for each day, create a card
                                 var dailyCardEl = document.createElement("div");
-                                dailyCardEl.classList = "daily-card";
+                                dailyCardEl.classList = "daily-card flex-column";
                                 dailyCardContainer.appendChild(dailyCardEl);
 
                                 //for each card, create a header with the date included
