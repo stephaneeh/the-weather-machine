@@ -20,7 +20,7 @@ Check out The Weather Machine here -
 
 ## Resources
 
-Third Party API provider = [https://api.openweathermap.org/data/2.5](https://openweathermap.org/api)
+Third Party API provider = https://openweathermap.org/api
 Current Day API - https://openweathermap.org/current
 5 Day Forecast API - https://openweathermap.org/forecast5
 
