@@ -20,9 +20,9 @@ Check out The Weather Machine here -
 
 ## Resources
 
-Third Party API provider = https://openweathermap.org/api
-Current Day API - https://openweathermap.org/current
-5 Day Forecast API - https://openweathermap.org/forecast5
+- Third Party API provider = https://openweathermap.org/api
+- Current Day API - https://openweathermap.org/current
+- 5 Day Forecast API - https://openweathermap.org/forecast5
 
 ## License
 [MIT](LICENSE)
