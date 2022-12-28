@@ -71,7 +71,7 @@ recentSearchesEl.addEventListener("click", function(event) {
 
 // Fetch current weather based on user input
 var getCurrentWeather = function (cityName) {
-    var queryCurrentURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&limit=" + limit + "&appid=" + APIKey;  
+    var queryCurrentURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&limit=" + limit + "&appid=" + APIKey;  
 
     fetch(queryCurrentURL) 
         .then(function (response) {
