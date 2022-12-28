@@ -47,7 +47,7 @@
   
   .btn {
     font-family: 'Roboto', sans-serif;
-    font-size: 1.3rem;
+    font-size: medium;
     text-decoration: none;
     padding: 6px 5px;
     width: 100%;
@@ -70,34 +70,34 @@
   }
   
 
-  .hero {
-    padding-top: 3%;
-    padding-inline: 4%;
-    background-color: var(--secondary);
-    color: var(--primary);
-  }
+.hero {
+  padding-top: 3%;
+  padding-inline: 4%;
+  background-color: var(--secondary);
+  color: var(--primary);
+}
   
-  .hero p {
-    max-width: 75%;
-  }
+.hero p {
+  max-width: 75%;
+}
   
-  .title {
-    font-size: 4rem;
-    color: var(--accent);
-    display: inline-block;
-    text-transform: uppercase;
-  }
+.title {
+  font-size: 4rem;
+  color: var(--accent);
+  display: inline-block;
+  text-transform: uppercase;
+}
 
-  .subtitle {
+.subtitle {
     display: inline-block;
     text-transform: uppercase;
-  }
+}
   
   /* FLEX CONTENT */
 .flex-row {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 
 }
 
@@ -107,22 +107,38 @@
   flex-wrap: wrap;
 }
 
-/* CARD CONTENT */
 
+.search-items {
+  font-size: medium;
+  padding: 6px 5px;
+  width: 100%;
+  display: block;
+  margin: 5px 0;
+  color: var(--dark);
+  border: none;
+  outline: none;
+  background-color: var(--tertiary);
+  transform: translate(-1px, -1px);
+}
+/* CARD CONTENT */
 .card,
 .results {
-  border: 1px solid red;
   margin: 10px;
   padding: 10px;
 }
 
 .daily-card {
-  border: 1px solid green;
+  background-color: var(--tertiary);
+  border-radius: 2px;
+  padding: 10px;
+  margin: 5px;
 }
 
-
-
-/* TODO: ADD A WAY TO HIDE RECENT SEARCHES IF NO SEARHCES MADE */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
 
 
 /* FORM CONTENT */

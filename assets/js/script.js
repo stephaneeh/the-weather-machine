@@ -43,6 +43,13 @@ var formSubmitHandler = function(event) {
 var loadRecentSearches = function() {
     recentSearchesEl.innerHTML = "";
     if (storedSearches.length > 0) {
+
+        var searchTitle = document.createElement("h3");
+        searchTitle.classList = "search-title";
+        searchTitle.textContent = "Recent Searches";
+        recentSearchesEl.appendChild(searchTitle);
+
+
         for (var i = 0; i < storedSearches.length; i++) {
             var liEl = document.createElement("li");
             liEl.classList = "search-items"
@@ -102,10 +109,10 @@ var getCurrentWeather = function (cityName) {
                         currentWeatherEl.append(currentImg);
 
                         var currentWeatherDetails = [
-                            "weather: " + weatherResults.weather[0].description,
-                            "temp: " +  weatherResults.main.temp + "C",
-                            "humidity: " + weatherResults.main.humidity + "%",
-                            "wind speed: " + weatherResults.wind.speed + "M/S",
+                            weatherResults.weather[0].description,
+                            "Temp: " +  weatherResults.main.temp + "C",
+                            "Humidity: " + weatherResults.main.humidity + "%",
+                            "Wind: " + weatherResults.wind.speed + "M/S",
                             ];
                         console.log(currentWeatherDetails);
 
@@ -140,9 +147,9 @@ var getCurrentWeather = function (cityName) {
 
                     //start daily forecast section for loop
                     for (var i = 0; i < forecastURL.length; i++) {
-                        let dateBlock = data.list[i].dt_txt.split(' ')[0];
                         let timeBlock = data.list[i].dt_txt.split(' ')[1];
-                            if (timeBlock == "00:00:00") {
+                    
+                            if (timeBlock == "03:00:00") {
                                 //for each day, create a card
                                 var dailyCardEl = document.createElement("div");
                                 dailyCardEl.classList = "daily-card";
@@ -151,7 +158,8 @@ var getCurrentWeather = function (cityName) {
                                 //for each card, create a header with the date included
                                 var dailyHeaderEl = document.createElement("h3");
                                 dailyHeaderEl.classList = "daily-header";
-                                dailyHeaderEl.textContent = dateBlock; 
+                                var dateCode = data.list[i].dt
+                                dailyHeaderEl.innerHTML = dayjs.unix(dateCode).format('DD/MM/YYYY');
                                 dailyCardEl.appendChild(dailyHeaderEl);
 
                                 //for each card, create a body for the content
@@ -164,7 +172,7 @@ var getCurrentWeather = function (cityName) {
                                 dayImg.src = "http://openweathermap.org/img/wn/" + data.list[i].weather[0].icon + ".png";
 
                                 var dayWeather = document.createElement("li");
-                                dayWeather.textContent = "Weather: " + data.list[i].weather[0].description;
+                                dayWeather.textContent = data.list[i].weather[0].description;
     
                                 var dayTemp = document.createElement("li");
                                 dayTemp.textContent = "Temp: " +  data.list[i].main.temp + " C";
@@ -173,7 +181,7 @@ var getCurrentWeather = function (cityName) {
                                 dayHumidity.textContent = "Humidity: " + data.list[i].main.humidity + "%";
     
                                 var dayWind = document.createElement("li");
-                                dayWind.textContent = "Wind Speed: " + data.list[i].wind.speed + " M/S";
+                                dayWind.textContent = "Wind: " + data.list[i].wind.speed + " M/S";
                                 
                                 dailyBodyEl.appendChild(dayImg);
                                 dailyBodyEl.appendChild(dayWeather);

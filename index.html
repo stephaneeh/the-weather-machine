@@ -19,7 +19,7 @@
 
 
   <main class="flex-row">
-    <section class="col-12 col-md-4">
+    <aside class="search-container col-12 col-md-4">
 
       <!-- User input form -->
       <div class="card">
@@ -32,27 +32,20 @@
       </div>
 
       <!-- User recent search history -->
-      <div class="card">
-        <h3 class="card-header">Recent Searches</h3>
-        <!-- TODO: update IDS for recent searches/LANGUAGE BUTTONS -->
-        <div id="recent-buttons" class="card-body">
-          <ul class = "recent-searches">
-
-          </ul>
-        </div>
+      <div class="recent-searches card">
       </div>
 
-    </section>
+    </aside>
 
     <section class="col-12 col-md-8">
       <!-- City search results for today -->
-      <div class="today-forecast results">
+      <div class="today-forecast">
         <div id="search-results"></div>
         <div id="results-container"></div>
       </div>
 
       <!-- City search results 5 day forecast -->
-      <div class="weekly-forecast results">
+      <div class="weekly-forecast">
       </div>
     </section>
 
